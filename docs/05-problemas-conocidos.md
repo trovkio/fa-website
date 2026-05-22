@@ -4,6 +4,22 @@ Bugs, limitaciones y workarounds. Esta es la primera lectura obligatoria antes d
 
 ---
 
+## 🔴 CRÍTICO — Escribir en cualquier página con MCP regenera el CSS global de Elementor
+
+**Síntoma:** Al hacer `update_page` con un JSON grande (72KB+), Elementor regenera el CSS global del sitio. Esto puede romper estilos de widgets de Houzez (property cards, search builder, etc.) en todas las páginas.
+
+**Causa confirmada (2026-05-22):** Cuando Elementor regenera el CSS, el archivo `post-9.css` (Kit global) se reescribe y algunos estilos de Houzez quedan fuera del nuevo archivo generado.
+
+**Workaround confirmado:**
+1. Si el CSS se rompe después de un `update_page`, ir al Kit predeterminado de Elementor (post 9) via el editor
+2. Entrar a Custom CSS → agregar un salto de línea al final → Save Changes
+3. Esto fuerza la regeneración completa del CSS global y restaura los estilos
+4. URL directa: `wp-admin/post.php?post=9&action=elementor`
+
+**Lección aprendida:** Antes de hacer `update_page` sobre cualquier página, tener claro el plan de rollback. Siempre tener el JSON original guardado.
+
+---
+
 ## 🔴 CRÍTICO — Houzez wrapper rompe el layout de Elementor
 
 **Síntoma:** Cuando abrís una página construida con Elementor en preview público, ves:
@@ -22,11 +38,6 @@ Bugs, limitaciones y workarounds. Esta es la primera lectura obligatoria antes d
 
 **Limitación del workaround:**
 - Canvas elimina TAMBIÉN el header del sitio. Sirve para páginas de staging/preview pero **no para páginas finales** que necesitan menú arriba.
-- Para páginas finales hay que resolver el conflicto Houzez/Elementor de otra forma (a investigar).
-
-**Hipótesis a probar (próxima sesión):**
-- Que el header del sitio esté hecho con Elementor Theme Builder. Si es así, basta con Canvas + agregar el header como container al inicio de cada página.
-- O resolver con CSS global que sobreescriba los wrappers de Houzez.
 
 ---
 
@@ -59,38 +70,48 @@ Bugs, limitaciones y workarounds. Esta es la primera lectura obligatoria antes d
 
 ---
 
+## 🟠 MEDIO — El MCP no puede pasar JSONs de más de ~30KB como parámetro inline sin errores de escape
+
+**Síntoma:** `update_page(elementor_data=<json grande>)` falla con "not valid JSON string" cuando el JSON supera cierto tamaño o contiene muchos caracteres escapados.
+
+**Causa:** Límites de encoding del parámetro string en el MCP.
+
+**Workaround:**
+- Para JSONs grandes, usar `ensure_ascii=True` al serializar con Python (convierte todos los caracteres especiales a `\uXXXX`)
+- Aun así, JSONs de 70KB+ pueden fallar. En ese caso fragmentar el contenido o usar el browser con sesión de admin activa.
+
+---
+
+## 🟠 MEDIO — WPvivid Backup sin backups guardados
+
+**Estado (2026-05-22):** El plugin WPvivid Backup está instalado pero el schedule estaba deshabilitado y no había ningún backup guardado.
+
+**Acción recomendada:** Activar el schedule automático diario. Hacer un backup manual ahora como baseline.
+
+**Ruta:** WP Admin → WPvivid Backup → Schedule → activar daily backup a Local Storage.
+
+---
+
+## 🟡 BAJO — Property cards más grandes de lo esperado en la home
+
+**Síntoma (detectado 2026-05-22):** Las imágenes del widget `houzez_elementor_property-card-v5` en la home se ven más grandes que en la demo de Houzez (`demo05.houzez.co`). Las cards son 3 columnas correctas pero el widget ocupa el ancho completo del section (1496px) y las imágenes quedan más altas de lo deseado.
+
+**Estado:** Parcialmente resuelto — el CSS global fue regenerado y las cards volvieron a 3 columnas. Falta afinar el ancho del container para que las cards sean más pequeñas.
+
+**Pendiente próxima sesión:** Determinar el ancho exacto que tenían antes (comparar con demo05.houzez.co) y ajustar el selector CSS correcto. El selector `.elementor-element-5811ff4 .property-cards-module { max-width: 960px }` no funcionó porque el widget es un `elementor-section` full-width. Necesita otro approach (cambiar `content_width` en el JSON o encontrar el selector correcto del grid).
+
+---
+
 ## 🟡 BAJO — Font Helvetica Now no siempre carga en preview
 
 **Síntoma:** A veces el editor renderiza con fallback (Roboto/system font).
 
-**Causa probable:** Cache del navegador, o Custom Fonts no propagadas, o el CSS de Elementor todavía no se regeneró.
+**Causa probable:** Cache del navegador, o Custom Fonts no propagadas.
 
 **Workaround:**
 - Hard refresh (Cmd+Shift+R)
 - Verificar que el plugin "Delete Cache" del admin bar haya corrido
-- Si persiste, ir a Elementor → Tools → Regenerate CSS
-
----
-
-## 🟡 BAJO — IDs de Elementor con guiones bajos al inicio
-
-**Síntoma:** Algunos parsers se confunden con IDs como `_logo01`.
-
-**Convención:** IDs alfanuméricos, sin guion bajo al inicio. Preferir `ftlogo01` a `_logo_01`.
-
----
-
-## 🟡 BAJO — Caracteres especiales en custom_css
-
-**Síntoma:** Cuando un `custom_css` tiene comillas dobles, JSON.stringify puede romper el escape.
-
-**Workaround:** Usar comillas simples dentro de los selectores cuando sea posible. Para HTML embebido en widgets `text-editor`, escapar manualmente.
-
----
-
-## ⚪ INFO — Slider Revolution presente pero no usado
-
-El sitio tiene Slider Revolution 6.7.41 instalado (viene con Houzez). **No usar** salvo necesidad muy específica. Preferir construir cualquier slider con containers Elementor o widgets nativos.
+- Si persiste, ir a Elementor → Tools → Clear Files & Data
 
 ---
 
@@ -98,18 +119,12 @@ El sitio tiene Slider Revolution 6.7.41 instalado (viene con Houzez). **No usar*
 
 Hay al menos 3 entidades relacionadas a footer:
 - Post 6700 — "footer" original, estado dudoso, posible candidato a borrar
-- Post 6704 — "Footer Staging FAP", página de trabajo
-- Post 6706 — "Elementor Footer", template del Theme Builder
+- Post 6704 — "Footer Staging FAP", página de trabajo con JSON validado
+- Post 6716 — "Footer Principal", template `fts_builder` Theme Builder de Houzez, publicado con condición "Entire Site" pero **no renderiza en el frontend** (bug no resuelto)
 
-Antes de hacer cualquier cosa con el footer, verificar el estado de los 3 y consolidar si es necesario.
+## ⚪ INFO — CSS Global del Kit (post-9) — estado actual
 
----
-
-## Convenciones para reportar nuevos problemas
-
-Al detectar un problema nuevo, agregarlo acá con:
-- **Severidad:** 🔴 CRÍTICO / 🟠 MEDIO / 🟡 BAJO / ⚪ INFO
-- **Síntoma:** qué se ve
-- **Causa:** qué lo provoca (hipótesis si no se confirmó)
-- **Workaround:** cómo se resuelve hoy
-- **Pendiente:** qué falta investigar
+El Custom CSS del Kit predeterminado (post 9) contiene:
+1. Fixes del footer grid (para cuando se resuelva el renderizado del footer)
+2. Regla parcial para property cards: `.elementor-element-5811ff4 .property-cards-module { max-width: 960px }` — **no está funcionando correctamente**, pendiente ajuste
+3. Regla para el search builder: `.elementor-element-c1d7965 .elementor-inner-section .elementor-container { max-width: 800px }` — **aplicada y funcionando**

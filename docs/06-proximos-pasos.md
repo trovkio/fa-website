@@ -6,113 +6,87 @@ Roadmap vivo. Actualizar al final de cada sesión.
 
 ## 🔥 Bloqueante inmediato (próxima sesión)
 
-### 1. Resolver el conflicto Houzez/Elementor para el footer
+### 1. Corregir tamaño de property cards en la home
 
-**Acción 1:** Identificar dónde está hecho el **header** del sitio (Elementor Theme Builder o Houzez Theme Options).
+**Problema:** Las cards del widget `houzez_elementor_property-card-v5` (section `5811ff4`) se ven más grandes que en `demo05.houzez.co`. El grid es correcto (3 columnas) pero el ancho total es demasiado grande.
 
-```
-Cómo verificar:
-1. Ir a WP admin → Templates → Theme Builder → Header
-   ¿Hay un header activo con condición "Entire Site"?
-2. Si sí → header es de Elementor → footer también debería ir por ahí
-3. Si no → header es de Houzez Theme Options → footer también debería ir por ahí
-```
+**Acción:** Antes de tocar cualquier CSS, abrir `demo05.houzez.co` con DevTools y medir:
+- Ancho del `.property-cards-module`
+- Ancho de cada `.item-listing-wrap`
+- Altura de `.listing-featured-thumb`
 
-**Acción 2:** Según el resultado, decidir el camino del footer:
-- **Si todo va por Elementor Theme Builder:** terminar el copy/paste de la página staging 6704 al template 6706. Asignar condición "Entire Site".
-- **Si todo va por Houzez Theme Options:** abandonar el template 6706 y armar el footer en Theme Options → Footer. Más limitado pero coherente con el resto.
+Después replicar esas medidas con CSS en el Kit global (post-9) usando el selector correcto (no `.elementor-element-5811ff4 .property-cards-module` que no aplicó).
 
-**Criterio de decisión:** consistencia con el header existente. No mezclar sistemas.
+**Approach alternativo:** Cambiar el `content_width` del section 5811ff4 directamente en el JSON de la home via `update_page`. Más limpio que CSS.
+
+### 2. Terminar de revisar todos los bloques de la home
+
+Uno por uno, comparar con demo05.houzez.co y ajustar lo que quedó diferente:
+- [ ] Property cards (tamaño) — pendiente
+- [ ] Search builder (ancho) — aplicado, verificar
+- [ ] "Descubre nuestra selección" (slideshow section)
+- [ ] Agentes
+- [ ] Blog posts
+- [ ] Barrios / grid builder
+
+### 3. Activar backup automático en WPvivid
+
+**Ruta:** WP Admin → WPvivid Backup → Schedule → daily, Local Storage.
+Hacer también un backup manual ahora como baseline antes de seguir trabajando.
 
 ---
 
-## 🟠 Siguiente (post-footer)
+## 🟠 Siguiente (post-home)
 
-### 2. Limpiar páginas borrador / duplicadas
+### 4. Clonar home a /residencial
 
-- Revisar estado del post 6700 (footer original). Si no aporta nada → borrar.
-- Revisar otras páginas borrador en WP admin → Pages → todas. Documentar o borrar.
+Ya se intentó pero el JSON de 72KB tuvo problemas con el CSS global. Con el backup activo y el approach correcto (cambiar `content_width` en lugar de CSS global), hacerlo de nuevo.
 
-### 3. Crear página `/nosotros`
+Post target: 6688 (page, publish, vacía).
 
-Brief en `08-briefs-paginas.md`. Es la siguiente página crítica (footer linkea a ella).
+### 5. Construir /nosotros, /contacto
 
-### 4. Crear página `/contacto`
-
-Brief en `08-briefs-paginas.md`. Form + datos físicos + map opcional.
+Brief en `08-briefs-paginas.md`.
 
 ---
 
 ## 🟡 Mediano plazo
 
-### 5. Resto del menú Propiedades
+### 6. Resolver footer (renderizado en frontend)
 
-- `/residencial`
+El footer Principal (post 6716, `fts_builder`) está publicado con condición "Entire Site" pero no aparece en el frontend. Hipótesis: Houzez Theme Options pisa el template `fts_builder`. Investigar con DevTools inspeccionando el footer en el DOM.
+
+### 7. Resto del menú Propiedades
+
 - `/emprendimientos`
 - `/comercial`
 
-Estructura parecida a `/tasaciones`, ajustando tono y contenido. Reusar containers.
+### 8. Plataforma editorial
 
-### 6. Plataforma editorial
-
-- `/radar` (Radar Inmobiliario) — landing del producto
-- `/intelligence` (FAP Intelligence) — landing del producto
-- `/blog` — listado de posts (¿usar tema o custom?)
-
-### 7. Sistema de "Preguntas"
-
-Decidir formato definitivo:
-- Opción A: cada pregunta es una página con respuesta editorial larga (mejor SEO)
-- Opción B: FAQ centralizada en una sola página
-- Opción C: posts del blog tageados como "preguntas"
-
-Recomendación tentativa: **A** para las 4 preguntas core, mientras se mantiene B como índice navegable.
-
----
-
-## ⚪ Largo plazo / a investigar
-
-### 8. Sistema de propiedades / listings
-
-Houzez es un tema de real estate con CPT de propiedades. Hay que decidir:
-- ¿Usar el CPT nativo de Houzez con su UI?
-- ¿Customizar las cards de propiedad con Elementor?
-- ¿Integración con portal MLS / scraping de portales (Argenprop, Zonaprop)?
-
-### 9. Carreras / Trabajá con nosotros
-
-Formato: landing + form, o link a sistema externo (Workable / Ashby / Notion).
-
-### 10. Newsletter / lead capture
-
-Decidir si va en footer o como página dedicada. Si va → integración con Mailchimp / Sendgrid / similar.
-
-### 11. Multilenguaje
-
-¿FA opera con clientes internacionales? Si sí, EN como segunda lengua. Plugin sugerido: WPML o Polylang.
-
-### 12. Performance audit
-
-Cuando esté el sitio armado, correr:
-- Lighthouse
-- PageSpeed Insights
-- WebPageTest
-
-Optimizar imágenes (WebP), lazy-load, critical CSS.
+- `/radar`
+- `/intelligence`
+- `/blog`
 
 ---
 
 ## Histórico de sesiones (changelog)
 
+### 2026-05-22
+- **Incidente:** `update_page` sobre `/residencial` (72KB JSON) regeneró el CSS global y rompió los estilos de property cards en toda la instalación
+- **Resolución:** Forzar regeneración del Kit global (post-9) via Custom CSS → Save. CSS restaurado.
+- **Pendiente:** Afinar tamaño de property cards (comparar con demo05.houzez.co)
+- **Aprendizaje crítico:** Todo `update_page` puede romper CSS global. Siempre tener backup activo antes de operar.
+- **Estado al cierre:** Home funcionando, cards en 3 columnas correctas pero tamaño a ajustar. /residencial vacía.
+
 ### 2026-05-21
 - Reconstruido contexto en chat nuevo (sesión anterior se quedó sin tokens)
 - Identificado el sistema de diseño de `/tasaciones` como fuente de verdad
 - Construido footer en página staging 6704
-- Creado template footer en Theme Builder (post 6706), vacío
+- Creado template footer en Theme Builder (post 6716), vacío
 - Identificado el wrapper Houzez como problema crítico
 - **Decisión:** armar repo de contexto para no perder más sesiones reconstruyendo
 
 ### Antes del 2026-05-21
 - Páginas existentes: `/tasaciones` (post 6081) completa
-- Mega menú armado (estado a verificar)
+- Mega menú armado
 - Sistema de diseño base implementado en `/tasaciones`
