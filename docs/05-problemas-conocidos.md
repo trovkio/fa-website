@@ -24,9 +24,11 @@ Bugs, limitaciones y workarounds. Esta es la primera lectura obligatoria antes d
 - Canvas elimina TAMBIÉN el header del sitio. Sirve para páginas de staging/preview pero **no para páginas finales** que necesitan menú arriba.
 - Para páginas finales hay que resolver el conflicto Houzez/Elementor de otra forma (a investigar).
 
-**Hipótesis a probar (próxima sesión):**
-- Que el header del sitio esté hecho con Elementor Theme Builder. Si es así, basta con Canvas + agregar el header como container al inicio de cada página.
-- O resolver con CSS global que sobreescriba los wrappers de Houzez.
+**Avance del 22 de mayo de 2026 (estado actualizado):**
+- Verificado que el header del sitio está hecho con Elementor Theme Builder (template `Header Principal`, condición `Entire Site`).
+- El footer va a ir por el mismo camino: nuevo template del Theme Builder.
+- Para construirlo, se trabaja primero en la página staging 6704 (post type `page`, accesible por el MCP) y después se copia al template.
+- Sigue pendiente entender si páginas finales con Page Layout normal (no Canvas) pueden coexistir bien con el header del Theme Builder + el footer nuevo, sin que Houzez inyecte breadcrumbs/sidebar.
 
 ---
 
@@ -38,7 +40,7 @@ Bugs, limitaciones y workarounds. Esta es la primera lectura obligatoria antes d
 
 **Workaround:**
 1. Construir el footer en una página staging (post type `page`) → 6704
-2. Abrir el editor de Elementor del template footer (post 6706)
+2. Abrir el editor de Elementor del template footer (post 6706, o uno nuevo)
 3. Abrir el editor de Elementor de la página staging en otra pestaña
 4. En la staging: click derecho sobre el container raíz del footer → **Copy**
 5. En el template: click derecho en el área vacía → **Paste**
@@ -97,11 +99,17 @@ El sitio tiene Slider Revolution 6.7.41 instalado (viene con Houzez). **No usar*
 ## ⚪ INFO — Múltiples "Footer" en la instalación
 
 Hay al menos 3 entidades relacionadas a footer:
-- Post 6700 — "footer" original, estado dudoso, posible candidato a borrar
-- Post 6704 — "Footer Staging FAP", página de trabajo
-- Post 6706 — "Elementor Footer", template del Theme Builder
+- Post 6700 — "footer" original, estado dudoso, posible candidato a borrar.
+- Post 6704 — "Footer Staging FAP", página de trabajo.
+- Post 6706 — "Elementor Footer", supuesto template del Theme Builder. Estado a verificar: el listado del Theme Builder al 22/05/2026 NO muestra un footer activo, lo que sugiere que 6706 o no existe ya o está vacío / no asignado.
 
 Antes de hacer cualquier cosa con el footer, verificar el estado de los 3 y consolidar si es necesario.
+
+---
+
+## ⚪ INFO — `Elementor #5791` (draft viejo en Theme Builder)
+
+En el listado del Theme Builder hay un template `Elementor #5791` en estado Draft, sin tipo asignado, modificado por última vez el 1 de abril de 2026. No tiene Display Rules. Probable candidato a borrar después de verificar que no contiene nada útil.
 
 ---
 
