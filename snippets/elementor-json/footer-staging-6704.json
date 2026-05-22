@@ -1,0 +1,523 @@
+[
+  {
+    "id": "ftmain02",
+    "elType": "container",
+    "settings": {
+      "container_type": "grid",
+      "grid_columns_grid": { "unit": "fr", "size": 6 },
+      "content_width": "full",
+      "padding": { "unit": "px", "top": "80", "right": "30", "bottom": "60", "left": "30", "isLinked": false },
+      "margin": { "unit": "px", "top": "0", "right": "0", "bottom": "0", "left": "0", "isLinked": false },
+      "grid_gaps": { "unit": "px", "size": 24, "column": "24", "row": "0", "isLinked": true },
+      "custom_css": "selector {\n  width: 100vw;\n  position: relative;\n  left: 50%;\n  right: 50%;\n  margin-left: -50vw;\n  margin-right: -50vw;\n  max-width: 100vw;\n  box-sizing: border-box;\n  background: #FFFFFF;\n  border-top: 1px solid rgba(0,0,0,0.85);\n  border-bottom: 1px solid rgba(0,0,0,0.12);\n  align-items: start;\n}\nselector > .e-con-inner {\n  max-width: 1400px;\n  margin-left: auto;\n  margin-right: auto;\n  width: 100%;\n  background-image: repeating-linear-gradient(\n    90deg,\n    transparent 0,\n    transparent calc((100% / 6) - 1px),\n    rgba(0,0,0,0.035) calc((100% / 6) - 1px),\n    rgba(0,0,0,0.035) calc(100% / 6)\n  );\n}"
+    },
+    "elements": [
+      {
+        "id": "ftcol01",
+        "elType": "container",
+        "settings": {
+          "content_width": "full",
+          "padding": { "unit": "px", "top": "0", "right": "0", "bottom": "0", "left": "0", "isLinked": true },
+          "custom_css": "selector {\n  grid-column: 1 / 2;\n}\nselector img {\n  width: 40px;\n  height: auto;\n  display: block;\n}"
+        },
+        "elements": [
+          {
+            "id": "ftlogo02",
+            "elType": "widget",
+            "widgetType": "image",
+            "settings": {
+              "image": {
+                "url": "https://papayawhip-fly-823460.hostingersite.com/wp-content/uploads/2026/05/RADAR-ISO.svg",
+                "id": 6100
+              },
+              "align": "left",
+              "width": { "unit": "px", "size": 40 }
+            }
+          }
+        ]
+      },
+      {
+        "id": "ftcol02",
+        "elType": "container",
+        "settings": {
+          "content_width": "full",
+          "padding": { "unit": "px", "top": "0", "right": "0", "bottom": "0", "left": "0", "isLinked": true },
+          "custom_css": "selector {\n  grid-column: 2 / 3;\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\nselector .elementor-widget {\n  width: 100%;\n}\nselector a {\n  text-decoration: none;\n  color: #000;\n}\nselector a:hover {\n  opacity: 0.5;\n}"
+        },
+        "elements": [
+          {
+            "id": "ftcol02h",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "Propiedades",
+              "header_size": "div",
+              "title_color": "#000000",
+              "typography_typography": "custom",
+              "typography_font_family": "Helvetica Now Display",
+              "typography_font_size": { "unit": "px", "size": 15 },
+              "typography_font_weight": "500",
+              "typography_line_height": { "unit": "em", "size": 1.4 },
+              "_margin": { "unit": "px", "top": "0", "right": "0", "bottom": "36", "left": "0", "isLinked": false }
+            }
+          },
+          {
+            "id": "ftcol02a",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "Tasaciones",
+              "header_size": "div",
+              "link": { "url": "/tasaciones" },
+              "title_color": "#000000",
+              "typography_typography": "custom",
+              "typography_font_family": "Helvetica Now Text",
+              "typography_font_size": { "unit": "px", "size": 14 },
+              "typography_font_weight": "400",
+              "typography_line_height": { "unit": "em", "size": 1.6 }
+            }
+          },
+          {
+            "id": "ftcol02b",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "Residencial",
+              "header_size": "div",
+              "link": { "url": "/residencial" },
+              "title_color": "#000000",
+              "typography_typography": "custom",
+              "typography_font_family": "Helvetica Now Text",
+              "typography_font_size": { "unit": "px", "size": 14 },
+              "typography_font_weight": "400",
+              "typography_line_height": { "unit": "em", "size": 1.6 }
+            }
+          },
+          {
+            "id": "ftcol02c",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "Emprendimientos",
+              "header_size": "div",
+              "link": { "url": "/emprendimientos" },
+              "title_color": "#000000",
+              "typography_typography": "custom",
+              "typography_font_family": "Helvetica Now Text",
+              "typography_font_size": { "unit": "px", "size": 14 },
+              "typography_font_weight": "400",
+              "typography_line_height": { "unit": "em", "size": 1.6 }
+            }
+          },
+          {
+            "id": "ftcol02d",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "Comercial",
+              "header_size": "div",
+              "link": { "url": "/comercial" },
+              "title_color": "#000000",
+              "typography_typography": "custom",
+              "typography_font_family": "Helvetica Now Text",
+              "typography_font_size": { "unit": "px", "size": 14 },
+              "typography_font_weight": "400",
+              "typography_line_height": { "unit": "em", "size": 1.6 }
+            }
+          }
+        ]
+      },
+      {
+        "id": "ftcol03",
+        "elType": "container",
+        "settings": {
+          "content_width": "full",
+          "padding": { "unit": "px", "top": "0", "right": "0", "bottom": "0", "left": "0", "isLinked": true },
+          "custom_css": "selector {\n  grid-column: 3 / 4;\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\nselector a {\n  text-decoration: none;\n  color: #000;\n}\nselector a:hover {\n  opacity: 0.5;\n}"
+        },
+        "elements": [
+          {
+            "id": "ftcol03h",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "Plataforma",
+              "header_size": "div",
+              "title_color": "#000000",
+              "typography_typography": "custom",
+              "typography_font_family": "Helvetica Now Display",
+              "typography_font_size": { "unit": "px", "size": 15 },
+              "typography_font_weight": "500",
+              "typography_line_height": { "unit": "em", "size": 1.4 },
+              "_margin": { "unit": "px", "top": "0", "right": "0", "bottom": "36", "left": "0", "isLinked": false }
+            }
+          },
+          {
+            "id": "ftcol03a",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "Radar Inmobiliario",
+              "header_size": "div",
+              "link": { "url": "/radar" },
+              "title_color": "#000000",
+              "typography_typography": "custom",
+              "typography_font_family": "Helvetica Now Text",
+              "typography_font_size": { "unit": "px", "size": 14 },
+              "typography_font_weight": "400",
+              "typography_line_height": { "unit": "em", "size": 1.6 }
+            }
+          },
+          {
+            "id": "ftcol03b",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "FAP Intelligence",
+              "header_size": "div",
+              "link": { "url": "/intelligence" },
+              "title_color": "#000000",
+              "typography_typography": "custom",
+              "typography_font_family": "Helvetica Now Text",
+              "typography_font_size": { "unit": "px", "size": 14 },
+              "typography_font_weight": "400",
+              "typography_line_height": { "unit": "em", "size": 1.6 }
+            }
+          },
+          {
+            "id": "ftcol03c",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "Blog",
+              "header_size": "div",
+              "link": { "url": "/blog" },
+              "title_color": "#000000",
+              "typography_typography": "custom",
+              "typography_font_family": "Helvetica Now Text",
+              "typography_font_size": { "unit": "px", "size": 14 },
+              "typography_font_weight": "400",
+              "typography_line_height": { "unit": "em", "size": 1.6 }
+            }
+          }
+        ]
+      },
+      {
+        "id": "ftcol04",
+        "elType": "container",
+        "settings": {
+          "content_width": "full",
+          "padding": { "unit": "px", "top": "0", "right": "0", "bottom": "0", "left": "0", "isLinked": true },
+          "custom_css": "selector {\n  grid-column: 4 / 5;\n  display: flex;\n  flex-direction: column;\n  gap: 14px;\n}\nselector a {\n  text-decoration: none;\n  color: #000;\n}\nselector a:hover {\n  opacity: 0.5;\n}"
+        },
+        "elements": [
+          {
+            "id": "ftcol04h",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "Preguntas",
+              "header_size": "div",
+              "title_color": "#000000",
+              "typography_typography": "custom",
+              "typography_font_family": "Helvetica Now Display",
+              "typography_font_size": { "unit": "px", "size": 15 },
+              "typography_font_weight": "500",
+              "typography_line_height": { "unit": "em", "size": 1.4 },
+              "_margin": { "unit": "px", "top": "0", "right": "0", "bottom": "34", "left": "0", "isLinked": false }
+            }
+          },
+          {
+            "id": "ftcol04a",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "¿Cuánto vale mi propiedad?",
+              "header_size": "div",
+              "link": { "url": "/preguntas/cuanto-vale" },
+              "title_color": "#000000",
+              "typography_typography": "custom",
+              "typography_font_family": "Helvetica Now Text",
+              "typography_font_size": { "unit": "px", "size": 14 },
+              "typography_font_weight": "400",
+              "typography_line_height": { "unit": "em", "size": 1.4 }
+            }
+          },
+          {
+            "id": "ftcol04b",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "¿Es buen momento para comprar?",
+              "header_size": "div",
+              "link": { "url": "/preguntas/buen-momento" },
+              "title_color": "#000000",
+              "typography_typography": "custom",
+              "typography_font_family": "Helvetica Now Text",
+              "typography_font_size": { "unit": "px", "size": 14 },
+              "typography_font_weight": "400",
+              "typography_line_height": { "unit": "em", "size": 1.4 }
+            }
+          },
+          {
+            "id": "ftcol04c",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "¿Cómo leer el mercado?",
+              "header_size": "div",
+              "link": { "url": "/preguntas/leer-mercado" },
+              "title_color": "#000000",
+              "typography_typography": "custom",
+              "typography_font_family": "Helvetica Now Text",
+              "typography_font_size": { "unit": "px", "size": 14 },
+              "typography_font_weight": "400",
+              "typography_line_height": { "unit": "em", "size": 1.4 }
+            }
+          },
+          {
+            "id": "ftcol04d",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "¿Qué es el valor relativo?",
+              "header_size": "div",
+              "link": { "url": "/preguntas/valor-relativo" },
+              "title_color": "#000000",
+              "typography_typography": "custom",
+              "typography_font_family": "Helvetica Now Text",
+              "typography_font_size": { "unit": "px", "size": 14 },
+              "typography_font_weight": "400",
+              "typography_line_height": { "unit": "em", "size": 1.4 }
+            }
+          }
+        ]
+      },
+      {
+        "id": "ftcol05",
+        "elType": "container",
+        "settings": {
+          "content_width": "full",
+          "padding": { "unit": "px", "top": "0", "right": "0", "bottom": "0", "left": "0", "isLinked": true },
+          "custom_css": "selector {\n  grid-column: 5 / 6;\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\nselector a {\n  text-decoration: none;\n  color: #000;\n}\nselector a:hover {\n  opacity: 0.5;\n}"
+        },
+        "elements": [
+          {
+            "id": "ftcol05h",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "Compañía",
+              "header_size": "div",
+              "title_color": "#000000",
+              "typography_typography": "custom",
+              "typography_font_family": "Helvetica Now Display",
+              "typography_font_size": { "unit": "px", "size": 15 },
+              "typography_font_weight": "500",
+              "typography_line_height": { "unit": "em", "size": 1.4 },
+              "_margin": { "unit": "px", "top": "0", "right": "0", "bottom": "36", "left": "0", "isLinked": false }
+            }
+          },
+          {
+            "id": "ftcol05a",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "Nosotros",
+              "header_size": "div",
+              "link": { "url": "/nosotros" },
+              "title_color": "#000000",
+              "typography_typography": "custom",
+              "typography_font_family": "Helvetica Now Text",
+              "typography_font_size": { "unit": "px", "size": 14 },
+              "typography_font_weight": "400",
+              "typography_line_height": { "unit": "em", "size": 1.6 }
+            }
+          },
+          {
+            "id": "ftcol05b",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "Contacto",
+              "header_size": "div",
+              "link": { "url": "/contacto" },
+              "title_color": "#000000",
+              "typography_typography": "custom",
+              "typography_font_family": "Helvetica Now Text",
+              "typography_font_size": { "unit": "px", "size": 14 },
+              "typography_font_weight": "400",
+              "typography_line_height": { "unit": "em", "size": 1.6 }
+            }
+          },
+          {
+            "id": "ftcol05c",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "Carreras",
+              "header_size": "div",
+              "link": { "url": "/carreras" },
+              "title_color": "#000000",
+              "typography_typography": "custom",
+              "typography_font_family": "Helvetica Now Text",
+              "typography_font_size": { "unit": "px", "size": 14 },
+              "typography_font_weight": "400",
+              "typography_line_height": { "unit": "em", "size": 1.6 }
+            }
+          }
+        ]
+      },
+      {
+        "id": "ftcol06",
+        "elType": "container",
+        "settings": {
+          "content_width": "full",
+          "padding": { "unit": "px", "top": "0", "right": "0", "bottom": "0", "left": "0", "isLinked": true },
+          "custom_css": "selector {\n  grid-column: 6 / 7;\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\nselector a {\n  text-decoration: none;\n  color: #000;\n}\nselector a:hover {\n  opacity: 0.5;\n}"
+        },
+        "elements": [
+          {
+            "id": "ftcol06h",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "Social",
+              "header_size": "div",
+              "title_color": "#000000",
+              "typography_typography": "custom",
+              "typography_font_family": "Helvetica Now Display",
+              "typography_font_size": { "unit": "px", "size": 15 },
+              "typography_font_weight": "500",
+              "typography_line_height": { "unit": "em", "size": 1.4 },
+              "_margin": { "unit": "px", "top": "0", "right": "0", "bottom": "36", "left": "0", "isLinked": false }
+            }
+          },
+          {
+            "id": "ftcol06a",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "Instagram",
+              "header_size": "div",
+              "link": { "url": "https://instagram.com/fabianachavalpropiedades", "is_external": "true" },
+              "title_color": "#000000",
+              "typography_typography": "custom",
+              "typography_font_family": "Helvetica Now Text",
+              "typography_font_size": { "unit": "px", "size": 14 },
+              "typography_font_weight": "400",
+              "typography_line_height": { "unit": "em", "size": 1.6 }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ftcontact01",
+    "elType": "container",
+    "settings": {
+      "container_type": "grid",
+      "grid_columns_grid": { "unit": "fr", "size": 6 },
+      "content_width": "full",
+      "padding": { "unit": "px", "top": "32", "right": "30", "bottom": "32", "left": "30", "isLinked": false },
+      "margin": { "unit": "px", "top": "0", "right": "0", "bottom": "0", "left": "0", "isLinked": false },
+      "grid_gaps": { "unit": "px", "size": 24, "column": "24", "row": "0", "isLinked": true },
+      "custom_css": "selector {\n  width: 100vw;\n  position: relative;\n  left: 50%;\n  right: 50%;\n  margin-left: -50vw;\n  margin-right: -50vw;\n  max-width: 100vw;\n  box-sizing: border-box;\n  background: #FFFFFF;\n  border-top: 1px solid rgba(0,0,0,0.12);\n}\nselector > .e-con-inner {\n  max-width: 1400px;\n  margin-left: auto;\n  margin-right: auto;\n  width: 100%;\n}"
+    },
+    "elements": [
+      {
+        "id": "ftcontactA",
+        "elType": "container",
+        "settings": {
+          "content_width": "full",
+          "padding": { "unit": "px", "top": "0", "right": "0", "bottom": "0", "left": "0", "isLinked": true },
+          "custom_css": "selector {\n  grid-column: 2 / 5;\n}\nselector a {\n  color: inherit;\n  text-decoration: none;\n}\nselector a:hover {\n  opacity: 0.5;\n}"
+        },
+        "elements": [
+          {
+            "id": "ftcontactAh",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "Contacto",
+              "header_size": "div",
+              "title_color": "rgba(0,0,0,0.5)",
+              "typography_typography": "custom",
+              "typography_font_family": "Helvetica Now Display",
+              "typography_font_size": { "unit": "px", "size": 13 },
+              "typography_font_weight": "500",
+              "typography_letter_spacing": { "unit": "px", "size": 0.3 },
+              "typography_line_height": { "unit": "em", "size": 1.4 },
+              "_margin": { "unit": "px", "top": "0", "right": "0", "bottom": "8", "left": "0", "isLinked": false }
+            }
+          },
+          {
+            "id": "ftcontactAtxt",
+            "elType": "widget",
+            "widgetType": "text-editor",
+            "settings": {
+              "editor": "<p style=\"margin:0; font-size:14px; line-height:1.6; color:#000000; font-family: 'Helvetica Now Text', sans-serif; font-weight:400;\"><a href=\"tel:+541148072345\">+54 11 4807 2345</a><br><a href=\"mailto:info@fabianachaval.com\">info@fabianachaval.com</a><br>Av. Gral. Las Heras 1681, CABA</p>"
+            }
+          }
+        ]
+      },
+      {
+        "id": "ftcontactB",
+        "elType": "container",
+        "settings": {
+          "content_width": "full",
+          "padding": { "unit": "px", "top": "0", "right": "0", "bottom": "0", "left": "0", "isLinked": true },
+          "custom_css": "selector {\n  grid-column: 5 / 7;\n}"
+        },
+        "elements": [
+          {
+            "id": "ftcontactBh",
+            "elType": "widget",
+            "widgetType": "heading",
+            "settings": {
+              "title": "Matrículas",
+              "header_size": "div",
+              "title_color": "rgba(0,0,0,0.5)",
+              "typography_typography": "custom",
+              "typography_font_family": "Helvetica Now Display",
+              "typography_font_size": { "unit": "px", "size": 13 },
+              "typography_font_weight": "500",
+              "typography_letter_spacing": { "unit": "px", "size": 0.3 },
+              "typography_line_height": { "unit": "em", "size": 1.4 },
+              "_margin": { "unit": "px", "top": "0", "right": "0", "bottom": "8", "left": "0", "isLinked": false }
+            }
+          },
+          {
+            "id": "ftcontactBtxt",
+            "elType": "widget",
+            "widgetType": "text-editor",
+            "settings": {
+              "editor": "<p style=\"margin:0; font-size:14px; line-height:1.6; color:#000000; font-family: 'Helvetica Now Text', sans-serif; font-weight:400;\">CUCICBA 6576<br>CMCPSI 6385</p>"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ftlegal02",
+    "elType": "container",
+    "settings": {
+      "content_width": "full",
+      "padding": { "unit": "px", "top": "24", "right": "30", "bottom": "24", "left": "30", "isLinked": false },
+      "margin": { "unit": "px", "top": "0", "right": "0", "bottom": "0", "left": "0", "isLinked": false },
+      "custom_css": "selector {\n  width: 100vw;\n  position: relative;\n  left: 50%;\n  right: 50%;\n  margin-left: -50vw;\n  margin-right: -50vw;\n  max-width: 100vw;\n  box-sizing: border-box;\n  background: #FFFFFF;\n  border-top: 1px solid rgba(0,0,0,0.12);\n  border-bottom: 1px solid rgba(0,0,0,0.12);\n}\nselector > .e-con-inner {\n  max-width: 1400px;\n  margin-left: auto;\n  margin-right: auto;\n  width: 100%;\n}"
+    },
+    "elements": [
+      {
+        "id": "ftlegaltxt02",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+          "editor": "<p style=\"margin:0; font-size:12px; line-height:1.6; color:#000000; font-family: 'Helvetica Now Text', sans-serif;\">© 2026 Fabián Achával Propiedades · <a href=\"/politica-de-privacidad\" style=\"color:#000000; text-decoration:none;\">Política de Privacidad</a></p>"
+        }
+      }
+    ]
+  }
+]
