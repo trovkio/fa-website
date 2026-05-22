@@ -17,6 +17,7 @@
 - **WP admin:** https://papayawhip-fly-823460.hostingersite.com/wp-admin/
 - **Editor Elementor de una página:** `/wp-admin/post.php?post={ID}&action=elementor`
 - **Preview público de página:** `/?page_id={ID}&preview=true`
+- **Theme Builder (lista):** `/wp-admin/edit.php?post_type=elementor_library&tabs_group=theme`
 
 ## MCP de Elementor
 
@@ -85,8 +86,25 @@ Servidor MCP llamado `elementor-mcp` configurado en el cliente Claude del usuari
 
 ## Header/Footer del sitio actual
 
-**Estado a verificar en la próxima sesión:**
-- ¿El header con menú (Propiedades / Investigación / Radar / FAi / Compañía / Blog / Contacto) está hecho con Elementor Theme Builder o con Houzez Theme Options?
-- ¿Hay un footer activo de Houzez que está peleando con el footer de Elementor?
+### Header — confirmado en Elementor Theme Builder
 
-Esta pregunta es **crítica** para decidir el camino del footer. Ver `05-problemas-conocidos.md`.
+**Estado:** verificado el 22 de mayo de 2026 inspeccionando WP-Admin → Templates → Theme Builder.
+
+| Template | Tipo | Display Rules | Estado |
+|---|---|---|---|
+| `Header Principal` | Header | Entire Site | Published |
+| `Elementor #5791` | (sin tipo) | — | Draft (descartar / borrar después) |
+
+- El header del sitio entero está hecho con **Elementor Theme Builder**, NO con Houzez Theme Options.
+- Shortcode interno (visible en Theme Builder): `[fts_template id='60']`.
+- El menú visible arriba (Propiedades / Investigación / Radar / FAi / Compañía / Blog / Contacto) sale de este template `Header Principal`.
+
+### Footer — debe ir por Elementor Theme Builder, para consistencia con el header
+
+**Estado:** no hay ningún template tipo Footer activo en el Theme Builder todavía.
+
+Decisión derivada del hallazgo del header:
+- El footer va a ser un template nuevo del Theme Builder.
+- Construir el footer primero en la página staging post 6704 (`page` type, donde el MCP de Elementor sí puede escribir).
+- Cuando esté validado, copiar el container raíz al template del Theme Builder y asignarle condición "Entire Site".
+- **No usar** Houzez Footer Builder (Theme Options) para mantener consistencia con el header.
