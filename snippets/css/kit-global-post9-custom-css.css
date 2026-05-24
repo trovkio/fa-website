@@ -1,14 +1,11 @@
 /* ===========================
    CSS Custom del Kit Predeterminado (post-9)
-   Última actualización: 2026-05-22
+   Última actualización: 2026-05-24
    Aplicado en: Elementor → Kit predeterminado → Custom CSS
    =========================== */
 
 /* ===========================
    FA Footer - Fix grid post-paste
-   Selecciona el último Grid principal y el
-   siguiente Grid (Contacto/Matriculas) en el
-   template Footer Principal
    =========================== */
 
 footer .e-con.e-grid:has(> .e-con-inner > .e-con:nth-child(6)),
@@ -54,17 +51,27 @@ footer .e-con.e-grid:has(> .e-con-inner > .e-con:nth-child(6)),
 }
 
 /* ===========================
-   FA Home - Property Cards: grid más angosto
-   ESTADO: NO FUNCIONA — selector incorrecto
-   PENDIENTE: encontrar selector correcto comparando con demo05.houzez.co
+   FA Home - Property Cards v5
+   widget id: 52f81fd / section: 5811ff4
    =========================== */
-.elementor-element-5811ff4 .property-cards-module {
-    max-width: 960px !important;
+
+/* 1. Devolver altura natural a las thumbs (override del 220px generado por Elementor) */
+.elementor-element-5811ff4 .listing-featured-thumb img,
+.elementor-element-5811ff4 .listing-thumb img {
+    height: auto !important;
+}
+
+/* 2. Grid más angosto — 900px para prueba */
+.elementor-element-52f81fd .property-cards-module-col-3,
+.elementor-element-52f81fd > .elementor-widget-container {
+    max-width: 900px !important;
     margin: 0 auto !important;
 }
 
-/* FA Home - Search Builder: más angosto */
-/* ESTADO: APLICADO Y FUNCIONANDO */
+/* ===========================
+   FA Home - Search Builder: más angosto
+   ESTADO: APLICADO Y FUNCIONANDO
+   =========================== */
 .elementor-element-c1d7965 .elementor-inner-section .elementor-container {
     max-width: 800px !important;
 }
