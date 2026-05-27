@@ -4,6 +4,29 @@ Bugs, limitaciones y workarounds. Esta es la primera lectura obligatoria antes d
 
 ---
 
+## 🔴 CRÍTICO — update_page sobre página publicada puede borrar todo el contenido
+
+**Síntoma:** Se intenta subir un JSON grande via `update_page` (o `update_page_from_file`). El MCP falla en el proceso, y el contenido de la página queda vacío o corrupto. **Ocurrió en la home del sitio al intentar construir un accordion.**
+
+**Causa confirmada:** El flujo fue:
+1. Se intentó construir un accordion en la home
+2. Se usó `update_page_from_file` que falla porque el MCP no comparte filesystem con `bash_tool`
+3. Se intentaron múltiples workarounds pasando el JSON inline
+4. El JSON estaba mal formado o incompleto en algún intento
+5. `update_page` con datos incorrectos sobreescribió la página con contenido vacío/roto
+6. La home quedó borrada
+
+**Reglas de seguridad derivadas (NO negociables):**
+
+1. **Nunca usar `update_page_from_file`** — el path del MCP y el de `bash_tool` son filesystems distintos, el archivo nunca llega. Siempre pasar el JSON inline en `elementor_data`.
+2. **Nunca hacer `update_page` en páginas publicadas sin backup previo** del JSON completo guardado en GitHub (`elementor-exports/`).
+3. **Antes de cualquier `update_page`, hacer `get_page` y commitear el JSON al repo** como snapshot de seguridad.
+4. **Trabajar siempre en staging (draft) primero.** Recién publicar cuando el resultado está verificado visualmente.
+5. **Si el JSON falla al subir, NO reintentar con variaciones** hasta entender qué salió mal. Cada intento fallido puede dejar la página en peor estado.
+6. **La home tiene contenido valioso.** Antes de tocarla, backup obligatorio.
+
+---
+
 ## 🔴 CRÍTICO — Escribir en cualquier página con MCP regenera el CSS global de Elementor
 
 **Síntoma:** Al hacer `update_page` con un JSON grande (72KB+), Elementor regenera el CSS global del sitio. Esto puede romper estilos de widgets de Houzez (property cards, search builder, etc.) en todas las páginas.
@@ -98,7 +121,7 @@ Bugs, limitaciones y workarounds. Esta es la primera lectura obligatoria antes d
 
 **Estado:** Parcialmente resuelto — el CSS global fue regenerado y las cards volvieron a 3 columnas. Falta afinar el ancho del container para que las cards sean más pequeñas.
 
-**Pendiente próxima sesión:** Determinar el ancho exacto que tenían antes (comparar con demo05.houzez.co) y ajustar el selector CSS correcto. El selector `.elementor-element-5811ff4 .property-cards-module { max-width: 960px }` no funcionó porque el widget es un `elementor-section` full-width. Necesita otro approach (cambiar `content_width` en el JSON o encontrar el selector correcto del grid).
+**Pendiente próxima sesión:** Determinar el ancho exacto que tenían antes (comparar con demo05.houzez.co) y ajustar el selector CSS correcto.
 
 ---
 
@@ -115,12 +138,25 @@ Bugs, limitaciones y workarounds. Esta es la primera lectura obligatoria antes d
 
 ---
 
+## ⚪ INFO — Header del sitio: Houzez con CSS override, NO Elementor Theme Builder
+
+**Confirmado (2026-05-27):** El header es el header nativo de Houzez (`#header-hz-elementor`), NO un template de Elementor Theme Builder. Está "domado" con CSS en Houzez Custom Code:
+- `#header-hz-elementor .elementor-element-2757625` → container interno, max-width 1400px centrado
+- `.elementor-sticky--active .e-con-inner` → fondo blanco translúcido con blur al hacer scroll
+- El menú usa Max Mega Menu plugin sobre el menú WP "Header FA"
+
+**Implicación para el footer:** el footer NO tiene que ir por Houzez Theme Options necesariamente — puede ir por Elementor Theme Builder. Pero la lógica del header sugiere que hay mezcla de sistemas. Verificar antes de decidir.
+
+---
+
 ## ⚪ INFO — Múltiples "Footer" en la instalación
 
 Hay al menos 3 entidades relacionadas a footer:
 - Post 6700 — "footer" original, estado dudoso, posible candidato a borrar
 - Post 6704 — "Footer Staging FAP", página de trabajo con JSON validado
-- Post 6716 — "Footer Principal", template `fts_builder` Theme Builder de Houzez, publicado con condición "Entire Site" pero **no renderiza en el frontend** (bug no resuelto)
+- Post 6706 — "Elementor Footer", template Theme Builder, **vacío actualmente**
+
+---
 
 ## ⚪ INFO — CSS Global del Kit (post-9) — estado actual
 
