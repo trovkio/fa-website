@@ -1,33 +1,26 @@
-# Exports Elementor
+# Elementor Exports
 
-Los snapshots JSON de páginas Elementor van acá. Sirven como referencia del sistema y backup.
+Snapshots de páginas en JSON. Usar como backup y referencia.
 
-## Cómo regenerar un export
+## Archivos
 
-En un chat de Claude con MCP de Elementor conectado:
+| Archivo | ID | Página | Fecha | Estado |
+|---|---|---|---|---|
+| `6081-tasaciones.json` | 6081 | /tasaciones | — | Fuente de verdad del sistema de diseño |
+| `6704-footer-staging.json` | 6704 | Footer Staging FAP | — | Footer construido, pendiente pasarlo al Theme Builder |
+| `5706-home-snapshot-2026-05-27.json` | 5706 | Homepage | 2026-05-27 | Snapshot de seguridad pre-trabajo |
 
-```
-1. tool_search(query="get page")
-2. get_page(pageId=XXXX) → trae JSON completo
-3. Guardar el campo `meta._elementor_data` (es un string JSON) parseado en `XXXX-{slug}.json`
-```
+## Cómo usar
 
-## Archivos esperados
+Antes de hacer `update_page` sobre cualquier página, hacer `get_page` y guardar el JSON acá como snapshot. Formato de nombre: `{ID}-{slug}-snapshot-{fecha}.json`.
 
-| Archivo | Página | Estado |
-|---|---|---|
-| `6081-tasaciones.json` | /tasaciones | Fuente de verdad del sistema de diseño |
-| `6704-footer-staging.json` | /footer-staging-fap | Trabajo en progreso del footer |
-| `6706-elementor-footer.json` | Template Theme Builder | Vacío al 2026-05-21 |
+## Nota sobre el home (5706)
 
-## ¿Por qué no están todos commiteados?
+La home tiene 20 containers (58KB de elementor_data). Contiene:
+- Container `8474a88`: accordion hero (widget HTML custom con CSS inline)
+- Section `c1d7965`: search builder con imagen de fondo
+- Section `5811ff4`: property cards v5
+- Container `9d86310`: "Decidir Bien" typography section
+- Y más secciones de Houzez demo que están pendientes de reemplazar
 
-Los JSON de Elementor son grandes (40-100KB cada uno) y cambian frecuentemente durante desarrollo. Para no inflar el repo:
-
-- Solo se commitea el JSON cuando hay un cambio estructural significativo.
-- Los snapshots intermedios viven en memoria del chat de Claude.
-- Para una sesión de trabajo, traer el JSON en vivo con `get_page(ID)`.
-
-## Convención de naming
-
-`{POST_ID}-{slug-corto}.json` — siempre el post ID primero, después el slug del WP.
+**No tocar sin backup previo.**
