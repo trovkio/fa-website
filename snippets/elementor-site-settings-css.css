@@ -1,0 +1,70 @@
+/* ============================================ */
+/* FA Footer - Fix grid post-paste              */
+/* ============================================ */
+footer .e-con.e-grid:has(> .e-con-inner > .e-con:nth-child(6)),
+.elementor-location-footer
+.e-con.e-grid:has(> .e-con-inner > .e-con:nth-child(6)) {
+  --grid-template-columns: repeat(6, 1fr);
+}
+.elementor-location-footer .e-con.e-grid:first-of-type > .e-con-inner {
+  display: grid !important;
+  grid-template-columns: repeat(6, 1fr) !important;
+  gap: 0 24px !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  align-items: start !important;
+}
+.elementor-location-footer .e-con.e-grid:first-of-type > .e-con-inner > .e-con:nth-child(1) { grid-column: 1 / 2 !important; }
+.elementor-location-footer .e-con.e-grid:first-of-type > .e-con-inner > .e-con:nth-child(2) { grid-column: 2 / 3 !important; }
+.elementor-location-footer .e-con.e-grid:first-of-type > .e-con-inner > .e-con:nth-child(3) { grid-column: 3 / 4 !important; }
+.elementor-location-footer .e-con.e-grid:first-of-type > .e-con-inner > .e-con:nth-child(4) { grid-column: 4 / 5 !important; }
+.elementor-location-footer .e-con.e-grid:first-of-type > .e-con-inner > .e-con:nth-child(5) { grid-column: 5 / 6 !important; }
+.elementor-location-footer .e-con.e-grid:first-of-type > .e-con-inner > .e-con:nth-child(6) { grid-column: 6 / 7 !important; }
+.elementor-location-footer .e-con.e-grid:first-of-type > .e-con-inner > .e-con:nth-child(n+2):nth-child(-n+6) {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+.elementor-location-footer .e-con.e-grid:nth-of-type(2) > .e-con-inner {
+  display: grid !important;
+  grid-template-columns: repeat(6, 1fr) !important;
+  gap: 0 24px !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  padding: 32px 30px !important;
+  border-top: 1px solid rgba(0,0,0,0.12);
+}
+.elementor-location-footer .e-con.e-grid:nth-of-type(2) > .e-con-inner > .e-con:nth-child(1) { grid-column: 2 / 5 !important; }
+.elementor-location-footer .e-con.e-grid:nth-of-type(2) > .e-con-inner > .e-con:nth-child(2) { grid-column: 5 / 7 !important; }
+.elementor-location-footer .e-con.e-grid > .e-con-inner > .e-con:empty {
+  display: none !important;
+}
+/* ===========================
+   FA Header - max-width 1400px
+   =========================== */
+.elementor-location-header .e-con-inner {
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+}
+/* ===========================
+   FA Home - Property Cards
+   =========================== */
+.elementor-element-5811ff4 .listing-featured-thumb,
+.elementor-element-5811ff4 .listing-thumb {
+    max-height: none !important;
+    overflow: hidden !important;
+    position: relative !important;
+}
+.elementor-element-5811ff4 .listing-featured-thumb img,
+.elementor-element-5811ff4 .listing-thumb img {
+    height: auto !important;
+    object-fit: cover !important;
+    width: 100% !important;
+}
+.elementor-element-5811ff4 .item-listing-wrap {
+    overflow: hidden !important;
+}
+/* FA Home - Search Builder: más angosto */
+.elementor-element-c1d7965 .elementor-inner-section .elementor-container {
+    max-width: 800px !important;
+}

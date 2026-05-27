@@ -1,0 +1,190 @@
+/* =============================================
+   FAP — GLOBAL CSS
+   Houzez Theme Options → Custom Code → CSS
+   ============================================= */
+
+/* --- HEADER --- */
+#header-hz-elementor {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+#header-hz-elementor .e-con-inner {
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  background: transparent !important;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+#header-hz-elementor .elementor-element-2757625 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  max-width: 1400px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.elementor-sticky--active .e-con-inner {
+  background: rgba(255,255,255,0.82) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.08) !important;
+}
+.elementor-sticky--active .houzez-elementor-menu a {
+  color: #000000 !important;
+}
+
+/* --- BOTONES / FORMULARIO DE CONTACTO --- */
+.houzez-contact-form .btn,
+.houzez-contact-form button[type="submit"],
+input[type="submit"],
+.btn-primary {
+  background-color: #DA7756 !important;
+  border-color: #DA7756 !important;
+}
+.houzez-contact-form .btn:hover,
+input[type="submit"]:hover,
+.btn-primary:hover {
+  background-color: #C4634A !important;
+  border-color: #C4634A !important;
+}
+
+/* --- FILO DE GRILLA --- */
+.elementor-widget-heading .elementor-widget-container,
+.elementor-widget-text-editor .elementor-widget-container {
+  padding: 0 !important;
+}
+.elementor-widget-text-editor p {
+  line-height: 1.5 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  margin-block-start: 0 !important;
+  margin-block-end: 0 !important;
+}
+
+/* --- FORMULARIO TASACIONES --- */
+.elementor-field-group .elementor-field-textual,
+.elementor-field:not(.elementor-field-type-upload):not(.elementor-select-wrapper) {
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: 1px solid rgba(0,0,0,0.85) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  padding: 40px 0 !important;
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: #000000 !important;
+  box-shadow: none !important;
+  outline: none !important;
+  font-family: "Helvetica Now Display", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+.elementor-field-group .elementor-field-textual::placeholder,
+.elementor-field:not(.elementor-field-type-upload):not(.elementor-select-wrapper)::placeholder {
+  color: rgba(0,0,0,0.5) !important;
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  font-family: "Helvetica Now Display", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+.elementor-field-group .elementor-field-textual:focus,
+.elementor-field:not(.elementor-field-type-upload):not(.elementor-select-wrapper):focus {
+  border-bottom: 1px solid #000000 !important;
+  box-shadow: none !important;
+}
+.elementor-field-group {
+  margin-bottom: 24px !important;
+}
+.elementor-field-textual.elementor-field-type-textarea {
+  resize: none !important;
+  height: 140px !important;
+}
+.elementor-button {
+  border-radius: 50px !important;
+  font-size: 16px !important;
+  letter-spacing: 0.05em !important;
+  text-transform: none !important;
+  padding: 26px !important;
+  margin-top: 24px !important;
+  width: 100% !important;
+  background-color: #DA7756 !important;
+  border-color: #DA7756 !important;
+  font-weight: 400 !important;
+  font-family: "Helvetica Now Display", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+.elementor-button:hover {
+  background-color: #C4634A !important;
+  border-color: #C4634A !important;
+}
+
+/* --- FORMULARIO FONDO TRANSPARENTE --- */
+.elementor-widget-houzez_elementor_contact_form .elementor-widget-container,
+.houzez-ele-form-js,
+.elementor-form,
+.e-form__fields-wrapper {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* --- MARGEN LATERAL GLOBAL --- */
+#page,
+.site-main,
+#content,
+.elementor-section-wrap {
+  padding-left: max(24px, calc((100vw - 1400px) / 2)) !important;
+  padding-right: max(24px, calc((100vw - 1400px) / 2)) !important;
+}
+
+/* --- OVERFLOW PROTECCION --- */
+.e-con.e-grid {
+  overflow: hidden !important;
+}
+
+/* --- ROW-GAP GRILLA 3 COLUMNAS (023f762) --- */
+.elementor-element-023f762.e-grid {
+  row-gap: 0 !important;
+  gap: 0 !important;
+}
+.elementor-element-023f762 > .elementor-widget {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.elementor-element-023f762 .elementor-widget-container {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* --- TABLET + MOBILE: GRILLA 3 COLUMNAS (023f762) --- */
+@media (max-width: 1024px) {
+  .elementor-element-023f762.e-grid {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: repeat(9, auto) !important;
+  }
+  .elementor-element-1ea2bbf { grid-column: 1 / -1 !important; grid-row: 1 !important; }
+  .elementor-element-8cc250b { grid-column: 1 / -1 !important; grid-row: 2 !important; }
+  .elementor-element-4e26d87 { grid-column: 1 / -1 !important; grid-row: 3 !important; }
+  .elementor-element-4707638 { grid-column: 1 / -1 !important; grid-row: 4 !important; }
+  .elementor-element-38e5d29 { grid-column: 1 / -1 !important; grid-row: 5 !important; }
+  .elementor-element-c3b710a { grid-column: 1 / -1 !important; grid-row: 6 !important; }
+  .elementor-element-e1b8fe6 { grid-column: 1 / -1 !important; grid-row: 7 !important; }
+  .elementor-element-35ebf9d { grid-column: 1 / -1 !important; grid-row: 8 !important; }
+  .elementor-element-6492cf8 { grid-column: 1 / -1 !important; grid-row: 9 !important; }
+}
+
+/* --- RESPONSIVE GLOBAL --- */
+@media (max-width: 1100px) {
+  .e-con.e-grid:not(.elementor-element-023f762) > [class*="elementor-element"] {
+    grid-column: 1 / -1 !important;
+  }
+  .e-con.e-grid {
+    grid-template-columns: 1fr !important;
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .e-con.e-grid {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
